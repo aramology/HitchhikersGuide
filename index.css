@@ -1,0 +1,493 @@
+
+		*{
+			/*position*/
+			/*box*/
+			padding:0px;
+			margin:0px;
+			/*text*/
+		}
+		body{
+			/*position*/
+			/*box*/
+			/*text*/
+		}
+		.wrapper{
+			/*position*/
+			/*box*/
+			margin:10px;
+			/*text*/
+			font-size:12px;
+			line-height:18px;
+			font-family:'UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+
+
+		/*BOXCONTENT*/
+		.boxcontent,
+		.box{
+			/*position*/
+			/*box*/
+			margin:0 0 6px 0;
+			border:3px solid #ccc; /*gray*/
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			padding:3px 6px 6px 6px;
+			/*text*/
+			font-family:'UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			cursor:pointer; cursor:hand;
+		}
+		/*.boxcontent{ display:none; }*/
+		td{ vertical-align:top; }
+		.boxcontent{ width:600px; }
+		.box{ width:180px; }
+		.pre{
+			white-space:pre;
+		}
+		.line{
+			/*position*/
+			position:relative;
+			/*box*/
+			height:18px;
+			/*text*/
+			white-space:nowrap; /*no wrap*/
+		}
+		.line.thin{
+			height:12px;
+		}
+		.line.halfthin{
+			height:15px;
+		}
+		.line.thick{
+			height:21px;
+		}
+		.line .text5{
+			/*position*/
+			z-index:5;
+			position:absolute;
+			left:0;
+			top:0;
+			/*box*/
+			/*text*/
+		}
+		.line .superscript4{
+			/*position*/
+			z-index:4;
+			position:absolute;
+			left:0;
+			top:0;
+			/*box*/
+			/*text*/
+		}
+		.line .superscript4,
+		.line .superscript4 :not(.show){
+			color:rgba(255,255,255,0);
+		}
+		.line .overline3{
+			/*position*/
+			z-index:3;
+			position:absolute;
+			left:0;
+			top:0;
+			/*box*/
+			/*text*/
+		}
+		.line .overline3,
+		.line .overline3 :not(.show){
+			color:rgba(255,255,255,0);
+		}
+		.line .underline2{
+			/*position*/
+			z-index:2;
+			position:absolute;
+			left:0;
+			top:0;
+			/*box*/
+			/*text*/
+		}
+		.line .underline2,
+		.line .underline2 :not(.show){
+			color:rgba(255,255,255,0);
+		}
+		.line .highlight1{
+			/*position*/
+			z-index:1;
+			position:absolute;
+			left:0;
+			top:0;
+			/*box*/
+			/*text*/
+		}
+		.line .highlight1,
+		.line .highlight1 :not(.show){
+			color:rgba(255,255,255,0);
+		}
+
+
+		/*COLORS*/
+		/*box colors*/
+		.box-none{
+			/*position*/
+			/*box*/
+			border-color:rgba(255,255,255,0); /*clear*/
+			border-top:none;
+			border-bottom:none;
+			padding-top:0;
+			padding-bottom:3px;
+			/*text*/
+		}
+		.box-jour,
+		.box-note{
+			border-color:#ccc; /*gray*/
+		}
+		.box-jour.small,
+		.box-note.small{
+			background-color:#ccc; /*gray*/
+			color:#fff;
+		}
+		.box-axio{
+			border-color:#99f; /*purple*/
+		}
+		.box-axio.small{
+			background-color:#99f; /*purple*/
+			color:#fff;
+		}
+		.box-defi{
+			border-color:#7cf; /*blue*/
+		}
+		.box-defi.small{
+			background-color:#7cf; /*blue*/
+			color:#fff;
+		}
+		.box-prop{
+			border-color:#8f7; /*green*/
+		}
+		.box-prop.small{
+			background-color:#8f7; /*green*/
+			color:#fff;
+		}
+		.box-exam,
+		.box-game{
+			border-color:#fe7; /*yellow*/
+		}
+		.box-exam.small,
+		.box-game.small{
+			background-color:#fe7; /*yellow*/
+			color:#fff;
+		}
+		.box-algo{
+			/*border-color:#fb8;*/ /*orange*/
+			border-color:#f88; /*darker pink*/
+		}
+		.box-algo.small{
+			/*background-color:#fb8;*/ /*orange*/
+			background-color:#f88; /*darker pink*/
+			color:#fff;
+		}
+		.box-visu,
+		.box-tool,
+		.box-meth, /*method: detailed instructions for doing stuff, just not code*/
+		.box-code{
+			border-color:#fa9; /*pink #ffc0cb*/
+		}
+		.box-visu.small,
+		.box-tool.small,
+		.box-meth.small,
+		.box-code.small{
+			background-color:#fa9; /*pink #ffc0cb*/
+			color:#fff;
+		}
+		.spec{ /*for special cases*/
+			border-color:#fe7; /*yellow*/
+		}
+		.recall{ /*for stuff that are reminders/refreshers*/
+		}
+		/*text colors*/
+		/*default for non-".text5"*/
+		a{
+			color:#444;
+		}
+		.show{
+			color:black;
+		}
+		.small .show{
+			color:#fff;
+		}
+		/*others*/
+		.defi{
+			color:#7cf; /*blue*/
+		}
+		.prop{
+			color:#8f7; /*green*/
+		}
+		.code{
+			border-color:#fa9; /*pink #ffc0cb*/
+		}
+		.class,
+		.focus{
+			color:#f40; /*red*/
+		}
+		.relation{
+			/*color:#fcc;*/ /*grayish red*/
+			/*color:#fb8;*/ /*orange*/
+			color:#a5f; /*purple*/
+		}
+		.box-exam.small .class,
+		.box-exam.small .focus{
+			color:#f97; /*softer red*/
+		}
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		.chunk{
+			margin:9px 0 3px 0;
+			padding-top:9px;
+			/*border-top:2px solid #fa9;*/
+			border-top:1px dashed #fa9;
+		}
+		input{
+			font-size:12px;
+			font-family:'UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		div.codeinput{
+			/*position*/
+			/*box*/
+			margin:3px 3px 0 3px;
+			padding-left:6px;
+			background-color:#eee; /* #333 */
+			/*text*/
+			overflow-x: auto;
+			white-space: nowrap;
+			color:#555; /* #fcc light pink*/
+			font-family:'Ubuntu Mono',helvetica,sans-serif;
+		}
+		div.codeinput::-webkit-scrollbar {
+			-webkit-appearance: none;
+			width: 7px;
+		}
+		div.codeinput::-webkit-scrollbar-track{
+			background-color:#eee
+		}
+		div.codeinput::-webkit-scrollbar-thumb {
+			border-radius: 4px;
+			background-color: rgba(220,220,220,1);
+			border: 3px solid transparent;
+			background-clip: content-box;
+		}
+		.usermade{
+			color:#f62; /*red*/
+			/*color:#fe8;*/ /*light orange*/
+		}
+		.box.small .usermade{
+			color:#fdd; /*pink*/
+		}
+		.extracode{
+			color:#eaa;
+		}
+		.temp{
+			/*color:#f85;*/ /*coral red*/
+			color:#aaa;
+		}
+		.comment{
+			color:#888; /*dark gray*/
+			font-size:12px;
+			font-family:'Ubuntu Mono',helvetica,sans-serif;
+		}
+		.comment a{
+			color:#888; /*dark gray*/
+		}
+		.small .comment{
+			color:#ddd; /*pale gray*/
+		}
+		div.codeoutput{
+			/*display:none;*/
+			/*position*/
+			/*box*/
+			margin:3px;
+			padding-left:6px;
+			background-color:#dee;/*#eed;*/
+			/*text*/
+			color:#888;
+			font-family:'Ubuntu Mono',helvetica,sans-serif;
+		}
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		/* experimenting!!!!!!! */
+		.note,
+		.additionalremark,
+		.times,
+		.insignificant{
+			color:#999; /*middle gray*/
+		}
+		.invisible{
+			color:#ccc; /*light gray*/
+		}
+		.inenglish{
+			color:#ddd; /*pale gray*/
+		}
+		.spacer{
+			color:rgba(255,255,255,0);
+		}
+		/*text colors: titles*/
+		.title{
+			background-color:gray;
+			color:#fff
+		}
+		.defi.title{
+			background-color:#7cf; /*blue*/
+		}
+		.prop.title{
+			background-color:#8f7; /*green*/
+		}
+		.exam.title{
+			background-color:#fe7; /*yellow*/
+		}
+		.tool.title,
+		.jour.title{
+			background-color:#fa9; /*pink #ffc0cb*/
+		}
+		.algo.title{
+			background-color:#f88; /*darker pink*/
+		}
+		.note.title{
+			background-color:#aaa; /*lighter-than-middle gray*/
+		}
+		/**/
+		.highlighter{
+			font-family:'UbuntuCerebriHighlight','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		/**/
+		.sub{
+			font-size:9px;
+			vertical-align:baseline;
+			position:relative;
+			top:0.25em;
+		}
+		.sub .sub{
+			font-size:6.75px;
+			vertical-align:baseline;
+			position:relative;
+			top:0.25em;
+		}
+		.super{
+			font-size:9px;
+			vertical-align:baseline;
+			position:relative;
+			top:-0.55em;
+		}
+		/**/
+		.linelosub{
+			vertical-align:baseline;
+			position:relative;
+			top:0.25em;
+		}
+		.linelo{
+			vertical-align:baseline;
+			position:relative;
+			top:0.05em;
+		}
+		.linemi{
+			vertical-align:baseline;
+			position:relative;
+			top:-0.95em;
+		}
+		.lineup{
+			font-family:'UbuntuCerebriSymUp','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		/**/
+		.symup{
+			font-family:'UbuntuCerebriSymUp','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		.symmi{
+			font-family:'UbuntuCerebriSymMi','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		.symlo{
+			font-family:'UbuntuCerebriSymLo','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		/**/
+		.blackboard{
+			font-family:'UbuntuCerebriBlackboard','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		.esti{
+			font-family:'UbuntuCerebriHat','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		.opti{
+			font-family:'UbuntuCerebriStar','UbuntuCerebriHat','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		/**/
+		.fullunderscore{
+			font-family:'Ubuntu Mono',helvetica,sans-serif;
+		}
+
+
+		/*BOXSTRUCTURE*/
+		.boxstructure_wrapper{
+			overflow:auto;
+		}
+		.boxstructure{
+			/*position*/
+			overflow:auto;
+			float:left;
+			/*box*/
+			margin-bottom:3px;
+			/*text*/
+		}
+		/*position boxstructures individually by their id's*/
+/*		#aquiringdata,
+		#preparingdata,
+		#exploringdata,
+		#communicatingdata,
+		#storingdata{
+			float:left;
+		}
+		#statistic,
+		#statistic4positions,
+		#statistic4spread,
+		#statistic4correlation{
+			float:left;
+		}*/
+		.bar{
+			/*position*/
+			position:relative;
+			float:left;
+			/*box*/
+			background-color:gray;
+			width:12px;
+			margin:0 6px 0 0;
+			/*text*/
+			color:white;
+			text-align:center;
+		}
+		.bar_color0{
+			background-color:#444; /*dark gray*/
+		}
+		.bar_color1{
+			background-color:#006; /*dark blue*/ /*statistics*/
+		}
+		.bar_color2{
+			background-color:#304; /*dark radish*/
+		}
+		.bar_color3{
+			background-color:#252; /*dark green*/ /*probability*/
+		}
+		.bar_color4{
+			background-color:#035; /*dark green-blue*/
+		}
+		.bar_color5{
+			background-color:#466; /*greenish gray*/ /*NLP*/
+		}
+
+		.boxes{
+			/*position*/
+			position:relative;
+			float:left;
+			/*box*/
+			margin:0 12px 0 0;
+			/*text*/
+		}
