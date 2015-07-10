@@ -1,0 +1,414 @@
+<!doctype html>
+<HTML lang="en">
+<HEAD>
+	<meta charset="utf-8" />
+	<title>.</title>
+	<link rel="shortcut icon" href="logo.ico">
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="all" href="index.css" />
+	<style type="text/css" media="all">
+		.wrapper{
+			font-size:14px;
+			line-height:18px;
+			/*font-size:18px;
+			line-height:24px;*/ /*TOGGLE!*/
+			font-family:'UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+		}
+		.menupanel{
+			/*position*/
+			/*box*/
+			margin:0 0 9px 0;
+			border:3px solid #dde;
+			-webkit-border-radius: 9px;
+			-moz-border-radius: 9px;
+			border-radius: 9px;
+			width:300px;
+			/*text*/
+		}
+		.menupanel_title{
+			padding:3px 12px 6px 12px;
+			background-color:#dde;
+			/*text*/
+			color:#339;
+		}
+		.menupanel_section{
+			/*display:none;*/ /*TOGGLE!*/
+			border-top:1px solid #dde;
+			padding:6px 12px 9px 12px;
+			cursor:pointer; cursor:hand;
+		}
+		.buzzbuzz{
+			/*display:none;*/ /*TOGGLE!*/
+			margin-left:24px;
+		}
+		.buzzdefi{
+			color:#05a;
+		}
+	</style>
+
+	<!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="http://isotope.metafizzy.co/jquery.isotope.min.js"></script> -->
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script src="lib/jquery.autoellipsis-1.0.10.min.js"></script>
+	<script src="lib/underscore-min.1.5.0.js"></script>
+	<script src="lib/backbone-min.1.1.2.js"></script>
+	<script src="index.js"></script>
+	<script>
+	</script>
+</HEAD>
+
+<BODY>
+<div class="wrapper">
+</div>
+	<script>
+		var menupanel_arra = [
+			// CHEAT SHEETS
+			{
+				"title":"DATA CHEAT SHEET",
+				"sections":[
+					[
+						"Types of data we usually find in data sets",
+						[ "integers","floating points","categorical variables","string","UNIX timestamp","latitude &amp; longitude","geocoding","GIS","image, sound, video, etc.", ],
+					],
+					[
+						"Formats data sets come and go in",
+						[ "structured data vs. UNstructured data","CSV","JSON","XML","SHP","KML", ],
+					],
+					[
+						"Databases: Storing, altering, and retrieving stuff from data sets",
+						[ "database management systems","query languages","relational databases &amp; SQL","MySQL","PostgreSQL","Oracle","NoSQL databases","MongoDB","graph databases","Neo4j", ],
+						"NOT databases",
+						[ "Excel?","OpenRefine","Google Fusion Tables?" ],
+					],
+					[
+						[ "data wrangling","data munging","data mining","data analysis", ],
+					],
+				],
+			},
+			{
+				"title":"PROGRAMMING CHEAT SHEET",
+				"sections":[
+					[
+						"NOT quite programming:",
+						"Creating webpages",
+						[ "HTML","CSS","JavaScript","jQuery", ],
+						"Writing readme files",
+						[ "markdown", ],
+						"Finding the parts of a text that matches a pattern we want",
+						[ "pattern matching","regular expressions", ],
+					],
+					[
+						"Giving precise commands to our computer (commands like &ldquo;Run this code&rdquo;)",
+						[ "the command line","shell","Terminal","Babun, Cygwin, Powershell, cmd.exe","shell scripting","UNIX commands","utility","flag","argument","piping","sudo", ],
+						"Writing code",
+						[ "IDEs","peudocode","documentation","StackOverflow","programming languages", ],
+						[ "Python","Ruby","R", ],
+					],
+					[
+						"Keeping track of changes in our code",
+						[ "version control","Git &amp; GitHub", ],
+					],
+					[
+						"Writing good code",
+						[ "design patterns?","data structures?","time &amp; space complexity","depth vs. breadth first search","etc. (algorithms? AI?)", ],
+					],
+					[
+						"Writing code that learns from data",
+						[ "machine learning","regression","classification","supervised &amp; UNsupervised","training &amp; testing","precision &amp; recall &amp; F-measure","features","etc.", ],
+						[ "regression, svm, k-means, knn, etc.", ],
+					],
+					[
+						[ "Amazon Web Services", ],
+					],
+				],
+			},
+			{
+				"title":"MATH CHEAT SHEET",
+				"sections":[
+					[
+						"trigonometry?",
+						"linear algebra",
+						[ "distance metric","matrices","etc.", ],
+						"calculus?",
+						"probability basics",
+						[ "distributions","etc.", ],
+						[ "Bayesian &amp; frequentist", ],
+						"geographic or network analysis, graph theory?",
+					],
+					[
+						"Reading academic papers",
+						"Citing studies correctly",
+					],
+				],
+			},
+
+			//PLANNING A DATA STORY
+			{
+				"title":"PLANNING A DATA STORY",
+				"sections":[
+					[
+						"Realizing the potential for a data story",
+						"Writing a data memo &amp; pitching a data story",
+						"Documenting your process",
+					],
+				],
+			},
+
+			//GETTING DATA
+			{
+				"title":"GETTING DATA",
+				"sections":[
+					[
+						"Downloading data sets",
+						[ "...", ],
+					],
+					[
+						"APIs: Using URLs that tell websites what part of their data you want",
+						[ "API","firehose"," API call","endpoint","query parameters", ],
+						[ "U.S. census API","forecast.io API","Twitter API","Spotify API","New York Times API", ],
+					],
+					[
+						"Scraping data from webpages",
+						[ "web-scraping","Beautiful Soup","Import.io", ],
+					],
+					[
+						"Negotiating for data",
+						[ "FOIA requests", ],
+					],
+					[
+						"If data is missing, finding out why",
+					],
+					[
+						"Crowd-sourcing data",
+						[ "Amazon&rsquo;s Mechanical Turk", ],
+					],
+					[
+						"Designing &amp; conducting surveys",
+						[ "Google Consumer Serveys", ],
+					],
+					[
+						"Using drones or sensors to collect data",
+						[ "Arduinos?", ],
+					],
+					[
+						"Reverse engineering algorithms",
+						[ "algorithmic accountability", ],
+					],
+				],
+			},
+		
+			// ANALYZING DATA
+			{
+				"title":"ANALYZING STRUCTURED DATA",
+				"sections":[
+					[
+						"Checking our data (&ldquo;Exploring&rdquo;)",
+						"&bull; Summarizing our data",
+						[ "sample mean","text facets","...", ],
+						"&bull; Pre-visualizing our data",
+						[ "histogram","...", ],
+					],
+					[
+						"Cleaning our data",
+						"&bull; Getting data in the right form",
+						"&bull; Tabular? Network?",
+						"&bull; Combining data sets",
+						[ "row joins","column joins", ],
+						"&bull; Coverting images or PDFs into text",
+					],
+					[
+						"Fitting models to our data (&ldquo;Confirming&rdquo;)",
+						[ "risk ratios","linear regression","logistic regression","principal components analysis","decision trees","neural networks","mixed effects models","...", ],
+						"&bull; Looking for the weights of various possible inputs",
+						"&bull; Looking for outliers",
+						"&bull; Inferring about the population beyond our data",
+						"&bull; Choosing among multiple hypotheses",
+						"&bull; Determining cause and effect",
+						"&bull; Avoiding confirmation bias",
+						"&bull; Putting the data in context",
+					],
+				],
+			},
+			{
+				"title":"ANALYZING UNSTRUCTURED TEXT DATA",
+				"sections":[
+					[
+						"&ldquo;Visualizinging&rdquo; our documents",
+						[ "language model | n-grams | Shannon visualization model", ],
+					],
+					[
+						"&ldquo;Cleaning&rdquo; our documents",
+						[ 	"text normalization",
+							"pattern matching",
+							"minimum edit distance &amp; Levenshtein distance",
+							"spell correction",
+							"part-of-speech tagging, parsing",
+							"word sense disambiguation",
+						],
+						"Filtering out the irrelevant documents",
+					],
+					[
+						"Determining if two documents talk about similar things",
+						[ "Jaccard coefficient","MinHashing", ],
+					],
+					[
+						"Determining what a document is about, who it&rsquo;s written by, etc.",
+						[ "document classification", ],
+						"Determining if a document expresses positive or negative feelings",
+						[ "sentiment analysis", ],
+						"Clustering our documents",
+						"Categorizing and counting our documents",
+					],
+					[
+						"Extracting information from our documents",
+						[ "named entity recognition","relation extraction", ],
+						"Looking for patterns or trends",
+					],
+					[
+						"Finding the documents that have the information we want",
+						[ "information retrieval: boolean &amp; ranked","TFIDF", ],
+						"Looking for outliers, smoking guns, or anecdotes",
+					],
+				],
+			},
+			{
+				"title":"ANALYZING IMAGE DATA",
+				"sections":[
+					[
+						[ "Tabula", ],
+					],
+				],
+			},
+			{
+				"title":"ANALYZING SOUND DATA",
+				"sections":[
+					[
+					],
+				],
+			},
+			{
+				"title":"ANALYZING VIDEO DATA",
+				"sections":[
+					[
+					],
+				],
+			},
+
+			// 
+			{
+				"title":"BULLETPROOFING OUR ANALYSIS",
+				"sections":[
+					[
+						"Making sure our analysis is correct",
+						"peer review, send it to academics for verification",
+						"Writing up methodologies",
+					],
+				],
+			},
+			{
+				"title":"COMMUNICATING DATA",
+				"sections":[
+					[
+						"Visualizing data",
+						[ "color theory","etc.", ],
+						[ "D3.js","Tableau","Plot.ly","leaflet, mapbox","ArcGIS", ],
+						"Sonifying data",
+						[ "P5.js","...", ],
+					],
+					[
+						"Writing the nutgraf (your findings go here)",
+						"Writing the lede",
+						"&bull; Using data vs. using anecdotes",
+						"&bull; Communicating risk",
+						"&bull; NOT introducing cognitive biases",
+					],
+					[
+						"Building news apps",
+						"Building reporting apps",
+					],
+					[
+						"User testing",
+					],
+				],
+			},
+
+			// 
+			{
+				"title":"STORING DATA",
+				"sections":[
+					[
+						"Storing our data",
+						"Sharing our data for future stories",
+						"Updating our data",
+						"Reproducing our analysis",
+					],
+				],
+			},
+			{
+				"title":"ARCHIVING NEWS APPS",
+				"sections":[
+					[
+						"e.g. make them static &amp; disable links",
+					],
+				],
+			},
+
+			// USER APPS
+			{
+				"title":"USER APPS",
+				"sections":[
+					[
+						[ "news apps","reporting apps","user apps", ]
+					],
+					[
+						"Helping newsrooms understand their own audience",
+						"Collecting internal/user data",
+						"Building news filters, recommendation systems: algorithmic, social",
+						"Getting news metrics: \"tracking flow and impact\"",
+					],
+				],
+			},
+
+			// JOURNALIST SECURITY
+			{
+				"title":"JOURNALIST SECURITY",
+				"sections":[
+					[
+						"how networks work",
+					],
+					[
+						"threat modeling",
+						"information security in the newsroom: keeping the newsroom safe",
+						"information security as a story: data journalists' understanding technical details in govnt hacking story",
+						"Jeff Larson: threat model is a law suit. just start using!",
+					],
+				],
+			},
+		];
+
+		var menupanel_stri
+		for( var p = 0 ; p < menupanel_arra.length ; p++ ){
+			menupanel_stri = "<div class=\"menupanel\"><div class=\"menupanel_title\">"+menupanel_arra[p]["title"]+"</div>"
+			for( var i = 0 ; i < menupanel_arra[p]["sections"].length ; i++ ){
+				menupanel_stri += "<div class=\"menupanel_section\">"
+				for( var j = 0 ; j < menupanel_arra[p]["sections"][i].length ; j++ ){
+					switch( $.type( menupanel_arra[p]["sections"][i][j] ) ){
+						case "string":
+							menupanel_stri += "<div>"+menupanel_arra[p]["sections"][i][j]+"</div>"
+							break;
+						case "array":
+							menupanel_stri += "<div class=\"buzzbuzz\">| <span class=\"buzzdefi\">"+menupanel_arra[p]["sections"][i][j].join( "</span>&nbsp;| <span class=\"buzzdefi\">" )+"</span>&nbsp;|</div>"
+							break;
+					}
+				}
+				menupanel_stri += "</div>"
+			}
+			menupanel_stri += "</div>"
+			$( ".wrapper" ).append( menupanel_stri );
+		}
+	</script>
+	<script src="barboxes.js"></script>
+</BODY>
+</HTML>
