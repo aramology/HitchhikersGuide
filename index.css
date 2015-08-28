@@ -1,3 +1,59 @@
+@font-face{
+	font-family: 'UbuntuCerebri';
+	src: url('webfontkit/ubuntucerebri-regular.eot');
+	src: url('webfontkit/ubuntucerebri-regular.eot?#iefix') format('embedded-opentype'),
+	     url('webfontkit/ubuntucerebri-regular.woff') format('woff'),
+	     url('webfontkit/ubuntucerebri-regular.ttf') format('truetype'),
+	     url('webfontkit/ubuntucerebri-regular.svg#webfont') format('svg');
+}
+@font-face{
+	font-family: 'UbuntuCerebriHat';
+	src: url('webfontkit/ubuntucerebrihat-regular.eot');
+	src: url('webfontkit/ubuntucerebrihat-regular.eot?#iefix') format('embedded-opentype'),
+	     url('webfontkit/ubuntucerebrihat-regular.woff') format('woff'),
+	     url('webfontkit/ubuntucerebrihat-regular.ttf') format('truetype'),
+	     url('webfontkit/ubuntucerebrihat-regular.svg#webfont') format('svg');
+}
+@font-face{
+	font-family: 'UbuntuCerebriHighlight';
+	src: url('webfontkit/ubuntucerebrihighlight-regular.eot');
+	src: url('webfontkit/ubuntucerebrihighlight-regular.eot?#iefix') format('embedded-opentype'),
+	     url('webfontkit/ubuntucerebrihighlight-regular.woff') format('woff'),
+	     url('webfontkit/ubuntucerebrihighlight-regular.ttf') format('truetype'),
+	     url('webfontkit/ubuntucerebrihighlight-regular.svg#webfont') format('svg');
+}
+@font-face{
+	font-family: 'UbuntuCerebriStar';
+	src: url('webfontkit/ubuntucerebristar-regular.eot');
+	src: url('webfontkit/ubuntucerebristar-regular.eot?#iefix') format('embedded-opentype'),
+	     url('webfontkit/ubuntucerebristar-regular.woff') format('woff'),
+	     url('webfontkit/ubuntucerebristar-regular.ttf') format('truetype'),
+	     url('webfontkit/ubuntucerebristar-regular.svg#webfont') format('svg');
+}
+@font-face{
+	font-family: 'UbuntuCerebriSymLo';
+	src: url('webfontkit/ubuntucerebrisymlo-regular.eot');
+	src: url('webfontkit/ubuntucerebrisymlo-regular.eot?#iefix') format('embedded-opentype'),
+	     url('webfontkit/ubuntucerebrisymlo-regular.woff') format('woff'),
+	     url('webfontkit/ubuntucerebrisymlo-regular.ttf') format('truetype'),
+	     url('webfontkit/ubuntucerebrisymlo-regular.svg#webfont') format('svg');
+}
+@font-face{
+	font-family: 'UbuntuCerebriSymMi';
+	src: url('webfontkit/ubuntucerebrisymmi-regular.eot');
+	src: url('webfontkit/ubuntucerebrisymmi-regular.eot?#iefix') format('embedded-opentype'),
+	     url('webfontkit/ubuntucerebrisymmi-regular.woff') format('woff'),
+	     url('webfontkit/ubuntucerebrisymmi-regular.ttf') format('truetype'),
+	     url('webfontkit/ubuntucerebrisymmi-regular.svg#webfont') format('svg');
+}
+@font-face{
+	font-family: 'UbuntuCerebriSymUp';
+	src: url('webfontkit/ubuntucerebrisymup-regular.eot');
+	src: url('webfontkit/ubuntucerebrisymup-regular.eot?#iefix') format('embedded-opentype'),
+	     url('webfontkit/ubuntucerebrisymup-regular.woff') format('woff'),
+	     url('webfontkit/ubuntucerebrisymup-regular.ttf') format('truetype'),
+	     url('webfontkit/ubuntucerebrisymup-regular.svg#webfont') format('svg');
+}
 
 		*{
 			/*position*/
