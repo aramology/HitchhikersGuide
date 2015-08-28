@@ -74,7 +74,7 @@
 			/*text*/
 			font-size:12px;
 			line-height:18px;
-			font-family:'UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebri',Ubuntu,sans-serif;
 		}
 
 
@@ -90,7 +90,7 @@
 			border-radius: 6px;
 			padding:3px 6px 6px 6px;
 			/*text*/
-			font-family:'UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebri',Ubuntu,sans-serif;
 			cursor:pointer; cursor:hand;
 		}
 		/*.boxcontent{ display:none; }*/
@@ -306,7 +306,7 @@
 		}
 		input{
 			font-size:12px;
-			font-family:'UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		div.codeinput{
 			/*position*/
@@ -318,7 +318,7 @@
 			overflow-x: auto;
 			white-space: nowrap;
 			color:#555; /* #fcc light pink*/
-			font-family:'Ubuntu Mono',helvetica,sans-serif;
+			font-family:'Ubuntu Mono',Monaco,monospace;
 		}
 		div.codeinput::-webkit-scrollbar {
 			-webkit-appearance: none;
@@ -350,7 +350,7 @@
 		.comment{
 			color:#888; /*dark gray*/
 			font-size:12px;
-			font-family:'Ubuntu Mono',helvetica,sans-serif;
+			font-family:'Ubuntu Mono',Monaco,monospace;
 		}
 		.comment a{
 			color:#888; /*dark gray*/
@@ -367,7 +367,7 @@
 			background-color:#dee;/*#eed;*/
 			/*text*/
 			color:#888;
-			font-family:'Ubuntu Mono',helvetica,sans-serif;
+			font-family:'Ubuntu Mono',Monaco,monospace;
 		}
 		/* experimenting!!!!!!! */
 		/* experimenting!!!!!!! */
@@ -416,7 +416,7 @@
 		}
 		/**/
 		.highlighter{
-			font-family:'UbuntuCerebriHighlight','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriHighlight',Ubuntu,sans-serif;
 		}
 		/**/
 		.sub{
@@ -454,31 +454,31 @@
 			top:-0.95em;
 		}
 		.lineup{
-			font-family:'UbuntuCerebriSymUp','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriSymUp','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		/**/
 		.symup{
-			font-family:'UbuntuCerebriSymUp','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriSymUp','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		.symmi{
-			font-family:'UbuntuCerebriSymMi','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriSymMi','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		.symlo{
-			font-family:'UbuntuCerebriSymLo','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriSymLo','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		/**/
 		.blackboard{
-			font-family:'UbuntuCerebriBlackboard','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriBlackboard','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		.esti{
-			font-family:'UbuntuCerebriHat','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriHat','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		.opti{
-			font-family:'UbuntuCerebriStar','UbuntuCerebriHat','UbuntuCerebri','Ubuntu Mono',helvetica,sans-serif;
+			font-family:'UbuntuCerebriStar','UbuntuCerebriHat','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		/**/
 		.fullunderscore{
-			font-family:'Ubuntu Mono',helvetica,sans-serif;
+			font-family:'Ubuntu Mono',Monaco,monospace;
 		}
 
 
