@@ -1,18 +1,59 @@
 
+//SIZE STUFF
+		//.bar height & .boxstructure_wrapper width
+		function barheight(){
+			//.bar height
+			$(".bar").each( 
+				function( i ){
+					var boxesheight = $(this).next(".boxes").innerHeight();
+					$(this).height( boxesheight - 6 );
+					// $(this).ellipsis( options={ellipsis:""} );
+				}
+			);
+		};
+		function boxstructurewrapperwidth(){
+			//.boxstructure_wrapper width
+			$(".boxstructure_wrapper").each(
+				function( i ){
+					var newwidth = 0;
+					$(this).find(".boxstructure .bar, .boxstructure .boxes").each(
+						function( i ){
+							newwidth += $(this).outerWidth(true);
+						}
+					);
+					$(this).width( newwidth );
+				}
+			);
+		};
+		//together
+		function barheightboxstructurewrapperwidth(){
+			barheight();
+			boxstructurewrapperwidth();
+		};
+
+
+//BACKBONE STUFF
 		var BoxModel = Backbone.Model.extend({
+			//defaults
 			defaults:{
 				"clicked":false
 			}
+			//validate
+			//initialize
 		});
 		var BoxModel_View = Backbone.View.extend({
+			//el OR tagName,className,id
 			tagName:"div",
 			className: function(){
 				return "box box-"+this.model.get("boxtype")+" small"
 			},
+			//render
 			render: function(){
 				this.$el.html( this.model.get("content_small")||$( "#"+this.model.get("content_id") ).html() );
 				return this;
 			},
+			//initialize
+			//events
 			events:{
 				"mouseover":"mouseover_box",
 				"mouseout" :"mouseout_box",
@@ -65,9 +106,14 @@
 			}
 		});
 		var BoxModelCollection = Backbone.Collection.extend({
+			//model
 			model:BoxModel,
+			//url
+			//initialize
 		});
 		var BoxModelCollection_View = Backbone.View.extend({
+			//el OR tagName,className,id
+			//render
 			render: function(){
 				this.collection.each( this.addBox,this );
 				// console.log(this.collection.bar_name);
@@ -77,6 +123,11 @@
 				var temp = new BoxModel_View( { model:box } );
 				this.$el.append( temp.render().el );
 			},
+			//initialize
+			// initialize: function() {
+			// 	this.$el = $('.boxes');
+			// },
+			//events
 			events:{
 				"click":"click_box_coll"
 			},
@@ -110,4 +161,89 @@
 					);
 				}
 			}
+		});
+
+		// var BoxRouter = Backbone.Router.extend({
+		// 	//routes
+		// 	routes :{
+		// 		"":"aboutlink",
+		// 		"project/:ttype/:tkey":"projectlink"
+		// 	},
+		// 	aboutlink: function() {
+		// 		$('#contentarea').load( 'about.html' );
+		// 	},
+		// 	projectlink: function(ttype,tkey) {
+		// 		$('#contentarea').load( 'projects/'+ttype+'_'+tkey+'/index.html' );
+		// 	}
+		// });
+
+		// //BoxRouter
+		// var box_router = new BoxRouter();
+		// Backbone.history.start();
+
+
+//CONTENT STUFF
+		function boxfiller( screenname,avengers ){
+			$.each( avengers,function( i,av ){
+				if( $.type( av ) === "string" ){
+					var hiddles = av;
+					var hemsarray = [ null ];
+					var atwell = '<div class="boxstructure" id="'+hiddles+'"> <div class="bar"></div><div class="boxes"><div class="boxcolumn"></div></div></div>';
+				}
+				else{
+					var hiddles = av[0];
+					var hemsarray = av[1];
+					var atwell = '<div class="boxstructure" id="'+hiddles+'"><div class="bar"></div><div class="boxes">';
+					$.each( hemsarray,function( i,hems ){
+						atwell += '<div class="boxcolumn" id="'+hems+'"></div>';
+					} );
+					atwell += '</div></div>';
+				}
+				// atwell looks like
+				// '<div class="boxstructure" id="'+hiddles+'">'
+				// + 	'<div class="bar">'
+				// + 	'</div>'
+				// + 	'<div class="boxes">'
+				// + 		'<div class="boxcolumn">'
+				// + 		'</div>'
+				// + 	'</div>'
+				// + '</div>'
+
+				//make em
+				$( "#screen_"+screenname+" .boxstructure_wrapper" ).append( atwell );
+
+				//fill em
+				$.each( hemsarray,function( i,hems ){
+					var hemshash       = ( hems )? ( "#"+hems ):( "" );
+					var hemsunderscore = ( hems )? ( "_"+hems ):( "" );
+					var temp = new BoxModelCollection_View( { collection:new BoxModelCollection( window["boxes_"+hiddles+hemsunderscore+"_arra"] ) } );
+					$( "#screen_"+screenname+" .boxstructure#"+hiddles+" .boxcolumn"+hemshash ).html( temp.render().el );
+				} );
+			} );
+			barheightboxstructurewrapperwidth();
+		};
+
+
+//STUFF STUFF
+		$( window ).on( 'load',function(e){
+			//fill up #screenarea
+			// $('#screenarea').load( 'screen_ProbStat.html',barheightboxstructurewrapperwidth );
+			barheightboxstructurewrapperwidth();
+
+
+			//heights & positions
+			var menuarea = $('#menuarea');
+			var screenarea = $('#screenarea');
+
+			function screenarearesizer() {
+				// screenarea.width(  $(window).width()-346 );
+				screenarea.height( $(window).height()-20 );
+				// menuarea.height( $(window).height() );
+				// screenarea.css( { 'left':menuarea.position().left+346 } );
+				return;
+			}
+
+			screenarearesizer();
+			$(window).resize( screenarearesizer );
+			$(window).scroll( screenarearesizer );
 		});

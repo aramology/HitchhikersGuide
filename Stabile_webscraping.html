@@ -1,0 +1,854 @@
+<!doctype html>
+<HTML lang="en">
+<HEAD>
+	<meta charset="utf-8" />
+	<title>.</title>
+	<link rel="shortcut icon" href="logo.ico">
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:500,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Economica:400,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="all" href="index.css" />
+	<style>
+		.boxcontent{
+			display:none;
+		}
+	</style>
+
+	<!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="http://isotope.metafizzy.co/jquery.isotope.min.js"></script> -->
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script src="lib/jquery.autoellipsis-1.0.10.min.js"></script>
+	<script src="lib/underscore-min.1.5.0.js"></script>
+	<script src="lib/backbone-min.1.1.2.js"></script>
+	<script src="index.js"></script>
+	<script>
+	</script>
+</HEAD>
+
+<BODY>
+	<div class="wrapper">
+		<div id="menuarea">
+		</div>
+		<div id="screenarea">
+			<div class="screen" id="screen_scraping">
+				<!-- boxcontent -->
+
+					<div class="boxcontent box-defi" id="defi_webscraping">
+						web-scraping is pulling data from a web page
+					</div>
+
+
+					<div class="boxcontent box-note" id="note_ethics_of_scraping">
+						&bull; http://onlinejournalismblog.com/2013/09/18/ethics-in-data-journalism-mass-data-gathering-scraping-foi-and-deception/
+						<br/>&bull; public vs. private websites, terms of use, ask to receive data regularly or to be whitelisted
+						<br/>&bull; don't bring down their website or hurt their business (don&rsquo;t repackage their data)
+						<br/>&bull; setting headers and time.sleep
+					</div>
+
+
+					<div class="boxcontent box-meth" id="meth_installing_anaconda">
+						<div class="boxtitle">
+							<span class="boxtitle">INSTALLING ANACONDA</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="instructions">
+									1: Go to https://www.continuum.io/downloads
+									<br/>2: Depending on your operating system, go to the section Anaconda for Windows, Anaconda for OS X, or Anaconda for Linux
+									<br/>3: Download the installer for Python 2.7 (NOT Python 3.5)
+									<br/>4: Double click the installer file and keep pressing "Continue" (In the "Select a Destination" part, you need to select "Install for me only" before you can click "Continue" again)
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-meth" id="meth_launching_ipython_notebook">
+						<div class="boxtitle">
+							<span class="boxtitle">LAUNCHING IPYTHON NOTEBOOK</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="instructions">
+									1: To save a lot of heartache later, let&rsquo;s create a folder called <span class="usermade">`workfolder` on the desktop</span> where we&rsquo;ll do all our work.
+									<br/>2: On a Mac, press command + space bar, type in "terminal," and press enter to get to the terminal.
+									<br/>&nbsp;&nbsp;&nbsp; On a PC, open the start menu, and type in "cmd.exe," and select cmd.exe to get to the command line.
+									<br/>3: Type in (the folder names may differ - if so, call the TA for help!)
+								</div>
+								<div class="codeinput">
+									cd <span class="usermade">Desktop/workfolder</span>
+								</div>
+								<div class="instructions">
+									and press enter to change directory into the folder we made earlier.
+									<br/>4: Type in
+								</div>
+								<div class="codeinput">
+									ipython notebook
+								</div>
+								<div class="instructions">
+									and press enter to launch iPython notebook from that folder.
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="boxcontent box-code" id="code_copying_and_pasting">
+						<div class="boxtitle">
+							<span class="boxtitle">COPYING &amp; PASTING HTML</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="markdown">
+									Quick and dirty tip first: If we&rsquo;re only going to scrape a few web pages, especially ones that we have to log in or fill out forms to get to, then it&rsquo;s probably not worth it to programmatically access the communication between a web server and our Python code.
+								</div>
+								<div class="instructions">
+									1: Just open the page in any browser (say Chrome),
+									<br/>2: view source (In Chrome, right click on the page and select "View Page Source") 
+									<br/>or inspect element (In Chrome, right click on the page and select "Inspect")
+									<br/>3: and copy. (In Chrome&rsquo;s Inspect Elements panel, right click on a tag, and select Copy &gt; Copy element)
+									<br/>4: Paste it in your code between three quotation marks:
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourhtml</span> = <span class="usermade">""">&lt;div class="row param">
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-4 columns">IMO&lt;/div>
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-7 columns">N/A&lt;/div>
+									<br/>&lt;/div>
+									<br/>&lt;div class="row param">
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-4 columns">Ship type&lt;/div>
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-7 columns">Fishing vessel&lt;/div>
+									<br/>&lt;/div>
+									<br/>&lt;div class="row param">
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-4 columns">Built&lt;/div>
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-7 columns">N/A&lt;/div>
+									<br/>&lt;/div>
+									<br/>&lt;div class="row param">
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-4 columns">Size&lt;/div>
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-7 columns">17 x 6 m&lt;/div>
+									<br/>&lt;/div>
+									<br/>&lt;div class="row param">
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-4 columns">GT&lt;/div>
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="small-7 columns">N/A&lt;/div>
+									<br/>&lt;/div>		
+									<br/>&lt;div class="tool-buttons">
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="/?mmsi=220383000" class="trackonmap-small" title="Track on map">&lt;i class="icon-location">&lt;/i>&lt;/a>
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a class="upload-photo-small" title="Upload photo" href="/vessels/uploadphoto/220383000">
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;i class="icon-camera">&lt;/i>&lt;/a>
+									<br/>&lt;/div>"""</span>
+								</div>
+								<div class="markdown">
+									The three quotation marks basically lets us have line breaks in our text.
+									<br/>Here, we store the text we&rsquo;ve copied in the variable <span class="extracode">ourhtml</span>.
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_requesting">
+						<div class="boxtitle">
+							<span class="boxtitle">REQUESTING A WEB PAGE&rsquo;S HTML</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Requesting a WEB PAGE&rsquo;S HTML
+								</div>
+								<div class="markdown">
+									We get the source HTML for the web page <span class="usermade">"https://www.vesselfinder.com/vessels"</span>
+									<br/>and store it in the variable <span class="extracode">ourhtml</span>.
+								</div>
+								<div class="codeinput">
+									import requests
+									<br/><span class="extracode">ourhtml</span> = requests.get( <span class="usermade">"https://www.vesselfinder.com/vessels"</span> ).content
+								</div>
+								<div class="markdown">
+								</div>
+							</div>
+
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Requesting a WEB PAGE&rsquo;S HTML with HEADERS
+								</div>
+								<div class="markdown">
+									This time we add headers to our request.
+									<br/>&bull; In one header, we add <span class="usermade">an email address</span> so that we are scraping transparently.
+									<br/>&bull; The other header is one of necessity: Some web pages deny access to automated processes that are not coming from browsers. To get around this, we can add <span class="usermade">a "User-Agent" header to announce that the request is coming from a browser</span>. 
+								</div>
+								<div class="codeinput">
+									import requests
+									<br/><span class="extracode">ourhtml</span> = requests.get( <span class="usermade">"https://www.vesselfinder.com/vessels"</span>,headers={ <span class="usermade">"From":"cuj@columbia.edu"</span>,<span class="usermade">"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36"</span> } ).content
+								</div>
+								<div class="markdown">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_filling_forms">
+						<div class="boxtitle">
+							<span class="boxtitle">GETTING THE HTML OF A WEB PAGE THAT WE GET BY LOGGING IN OR FILLING FORMS</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="markdown">
+									We want a webpage <span class="usermade">"http://www.journalism.columbia.edu/page/750-deadlines-calendar/774"</span> that is only accessible by 
+									first clicking <span class="usermade">blue "Login to J-School Website" button (whose xpath is '//*[@id="page-content"]/div[2]/form/input[3]')</span>,
+									then filling in the <span class="usermade">username</span> and <span class="usermade">password</span>, and clicking the <span class="usermade">submit button</span>.
+									<br/>We store the source of the resulting page in a variable <span class="extracode">ourhtml</span>.
+								</div>
+								<div class="codeinput">
+									from selenium import webdriver
+									<br/><span class="temp">ourbrowser</span> = webdriver.Firefox() 
+									<br/><span class="temp">ourbrowser</span>.get( <span class="usermade">"http://www.journalism.columbia.edu/page/750-deadlines-calendar/774"</span> ) 
+									<br/>
+									<br/><span class="temp">ourbrowser</span>.find_element_by_xpath( <span class="usermade">'//*[@id="page-content"]/div[2]/form/input[3]'</span> ).click()
+									<br/>
+									<br/><span class="temp">ourbrowser</span>.find_element_by_id( <span class="usermade">"username"</span> ).send_keys( <span class="usermade">"someUNI"</span> )
+									<br/><span class="temp">ourbrowser</span>.find_element_by_id( <span class="usermade">"password"</span> ).send_keys( <span class="usermade">"somepassword"</span> )
+									<br/><span class="temp">ourbrowser</span>.find_element_by_name( <span class="usermade">"submit"</span> ).click()
+									<br/>
+									<br/><span class="extracode">ourhtml</span> = <span class="temp">ourbrowser</span>.page_source
+									<br/>
+									<br/><span class="temp">ourbrowser</span>.close() 
+									<br/><span class="temp">ourbrowser</span>.quit()
+								</div>
+								<div class="markdown">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_scraping_list_of_urls">
+						<div class="boxtitle">
+							<span class="boxtitle">SCRAPING FROM A LIST OF URLS</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="markdown">
+									We want to scrape webpages with URLs of the form <span class="usermade">"https://www.vesselfinder.com/vessels?page=1"</span>, where only the numbers change from <span class="usermade">1</span> to <span class="usermade">5</span>.
+									<br/>Here we store each webpage&rsquo;s HTML in a variable <span class="extracode">ourhtml</span>, and just <span class="extracode">print</span> display it on the screen.
+								</div>
+								<div class="codeinput">
+									import requests
+									<br/>for <span class="temp">p</span> in <span class="usermade">[ 1,2,3,4,5 ]</span>:
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="extracode">ourhtml</span> = requests.get( <span class="usermade">"https://www.vesselfinder.com/vessels?page="</span>+str( <span class="temp">p</span> ),headers={ <span class="usermade">"From":"cuj@columbia.edu"</span>,<span class="usermade">"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36"</span> } ).content
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="extracode">print ourhtml</span>
+								</div>
+								<div class="markdown">
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="boxcontent box-code" id="code_html_to_soup">
+						<div class="boxtitle">
+							<span class="boxtitle">TURNING THE HTML INTO &ldquo;SOUP&rdquo;</span>
+						</div>
+
+		 				<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="markdown">
+									We could search through a string text to see what's there, but for string text in the HTML format, turning it into a BeautifulSoup object makes it much easier for us to dig through ("<span class="">parse</span>") it tag by tag.
+								</div>
+								<div class="codeinput">
+									from bs4 import BeautifulSoup
+									<br/><span class="extracode">oursoup</span> = BeautifulSoup( <span class="extracode">ourhtml</span> )
+								</div>
+								<div class="markdown">
+									Here we first import <span class="">BeautifulSoup</span> from the library <span class="">bs4</span>, which is the 4th version of the library.
+									<br/>Then we take the string text <span class="extracode">ourhtml</span> to create a BeautifulSoup object,
+									<br/>and store it in the variable named <span class="extracode">oursoup</span>.
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="boxcontent box-code" id="code_tags_by_name_and_attribute">
+						<div class="boxtitle">
+							<span class="boxtitle">FINDING TAG(S) BY NAME AND/OR ATTRIBUTE</span>
+						</div>
+
+		 				<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Finding THE FIRST matching TAG by TAG NAME and/or TAG ATTRIBUTE(S)
+								</div>
+								<div class="markdown">
+									We look into the BeautifulSoup object <span class="extracode">oursoup</span> 
+									and find the 1st tag inside 
+									<br/>with the name <span class="usermade">"a"</span>
+									and with the attribute <span class="usermade">"ctype"</span> that has the value <span class="usermade">"nav.next"</span>.
+									<br/>We get a tag object.
+								</div>
+								<div class="codeinput">
+									<span class="extracode">oursoup</span>.find( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } )
+								</div>
+								<div class="markdown">
+									So now what?
+									<br/>We can now store it in a variable <span class="extracode">ourtag</span>. Then what? Here, we just print-display it out on the screen:
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span> = <span class="extracode">oursoup</span>.find( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } )
+									<br/><span class="extracode">print ourtag</span>
+								</div>
+								<div class="codeoutput">
+									&lt;a ctype="nav.next" href="/search?q=seneca&amp;btnG=Start+Search&amp;site=default_collection&amp;client=test_mainfrontend&amp;output=xml_no_dtd&amp;proxystylesheet=test_mainfrontend&amp;filter=p&amp;getfields=*&amp;ie=UTF-8&amp;ulang=&amp;ip=192.168.8.1&amp;access=p&amp;sort=date:D:L:d1&amp;q=(filetype:pdf+)&amp;entqr=3&amp;entqrm=0&amp;wc=200&amp;wc_mc=1&amp;oe=UTF-8&amp;ud=1&amp;start=10">Next\xa0&gt;&lt;/a&gt;
+								</div>
+								<div class="markdown">
+									But there&rsquo;s more we can do. See boxes on this column.
+								</div>
+							</div>
+
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Finding ALL matching TAGS by TAG NAME and/or TAG ATTRIBUTE(S)
+								</div>
+								<div class="markdown">
+									We look into the BeautifulSoup object <span class="extracode">oursoup</span> 
+									and find all tags inside
+									<br/>with the name <span class="usermade">"a"</span>
+									and with the attribute <span class="usermade">"ctype"</span> that has the value <span class="usermade">"nav.next"</span>.
+									<br/>We get a list of tag objects.
+								</div>
+								<div class="codeinput">
+									<span class="extracode">oursoup</span>.find_all( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } )
+								</div>
+								<div class="markdown">
+									So now what?
+									<br/>Because this is NOT just one tag objects but a list of tag objects, we often caN&rsquo;T just do to stuff we&rsquo;d do to one tag object.
+									<br/>Here we loop through the list of tag objects, calling each tag object <span class="extracode">ourtag</span> in each loop. Then we just print-display each out on the screen:
+								</div>
+								<div class="codeinput">
+									for <span class="extracode">ourtag</span> in <span class="extracode">oursoup</span>.find_all( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } ):
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="extracode">print ourtag</span>
+								</div>
+								<div class="codeoutput">
+									&lt;a ctype="nav.next" href="/search?q=seneca&amp;btnG=Start+Search&amp;site=default_collection&amp;client=test_mainfrontend&amp;output=xml_no_dtd&amp;proxystylesheet=test_mainfrontend&amp;filter=p&amp;getfields=*&amp;ie=UTF-8&amp;ulang=&amp;ip=192.168.8.1&amp;access=p&amp;sort=date:D:L:d1&amp;q=(filetype:pdf+)&amp;entqr=3&amp;entqrm=0&amp;wc=200&amp;wc_mc=1&amp;oe=UTF-8&amp;ud=1&amp;start=10">Next &gt;&lt;/a>
+									<br/>&lt;a ctype="nav.next" href="/search?q=seneca&amp;btnG=Start+Search&amp;site=default_collection&amp;client=test_mainfrontend&amp;output=xml_no_dtd&amp;proxystylesheet=test_mainfrontend&amp;filter=p&amp;getfields=*&amp;ie=UTF-8&amp;ulang=&amp;ip=192.168.8.1&amp;access=p&amp;sort=date:D:L:d1&amp;q=(filetype:pdf+)&amp;entqr=3&amp;entqrm=0&amp;wc=200&amp;wc_mc=1&amp;oe=UTF-8&amp;ud=1&amp;start=10">Next&lt;/a>
+								</div>
+								<div class="markdown">
+									But there&rsquo;s a lot more we can do with each tag object. See boxes on this column.
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_tags_inside_tag">
+						<div class="boxtitle">
+							<span class="boxtitle">FINDING TAG(S) INSIDE ANOTHER TAG BY NAME AND/OR ATTRIBUTE</span>
+						</div>
+
+		 				<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Finding THE FIRST matching TAG by TAG NAME and/or TAG ATTRIBUTE(S)
+								</div>
+								<div class="markdown">
+									We look into the tag object <span class="extracode">ourtag</span> 
+									and find the 1st tag inside 
+									<br/>with the name <span class="usermade">"a"</span>
+									and with the attribute <span class="usermade">"ctype"</span> that has the value <span class="usermade">"nav.next"</span>.
+									<br/>We get a tag object.
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>.find( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } )
+								</div>
+								<div class="markdown">
+									So now what?
+									<br/>We can now store it in a variable <span class="extracode">ourtag</span>. Then what? Here, we just print-display it out on the screen:
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtaginside</span> = <span class="extracode">ourtag</span>.find( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } )
+									<br/><span class="extracode">print ourtaginside</span>
+								</div>
+								<div class="codeoutput">
+									&lt;a ctype="nav.next" href="/search?q=seneca&amp;btnG=Start+Search&amp;site=default_collection&amp;client=test_mainfrontend&amp;output=xml_no_dtd&amp;proxystylesheet=test_mainfrontend&amp;filter=p&amp;getfields=*&amp;ie=UTF-8&amp;ulang=&amp;ip=192.168.8.1&amp;access=p&amp;sort=date:D:L:d1&amp;q=(filetype:pdf+)&amp;entqr=3&amp;entqrm=0&amp;wc=200&amp;wc_mc=1&amp;oe=UTF-8&amp;ud=1&amp;start=10">Next\xa0&gt;&lt;/a&gt;
+								</div>
+								<div class="markdown">
+									But there&rsquo;s more we can do. See boxes on this column.
+								</div>
+							</div>
+
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Finding ALL matching TAGS by TAG NAME and/or TAG ATTRIBUTE(S)
+								</div>
+								<div class="markdown">
+									We look into the tag object <span class="extracode">ourtag</span> 
+									and find all tags inside
+									<br/>with the name <span class="usermade">"a"</span>
+									and with the attribute <span class="usermade">"ctype"</span> that has the value <span class="usermade">"nav.next"</span>.
+									<br/>We get a list of tag objects.
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>.find_all( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } )
+								</div>
+								<div class="markdown">
+									So now what?
+									<br/>Because this is NOT just one tag objects but a list of tag objects, we often caN&rsquo;T just do to stuff we&rsquo;d do to one tag object.
+									<br/>Here we loop through the list of tag objects, calling each tag object <span class="extracode">ourtag</span> in each loop. Then we just print-display each out on the screen:
+								</div>
+								<div class="codeinput">
+									for <span class="extracode">ourtaginside</span> in <span class="extracode">ourtag</span>.find_all( <span class="usermade">"a"</span>,attrs={ <span class="usermade">"ctype"</span>:<span class="usermade">"nav.next"</span> } ):
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="extracode">print ourtaginside</span>
+								</div>
+								<div class="codeoutput">
+									&lt;a ctype="nav.next" href="/search?q=seneca&amp;btnG=Start+Search&amp;site=default_collection&amp;client=test_mainfrontend&amp;output=xml_no_dtd&amp;proxystylesheet=test_mainfrontend&amp;filter=p&amp;getfields=*&amp;ie=UTF-8&amp;ulang=&amp;ip=192.168.8.1&amp;access=p&amp;sort=date:D:L:d1&amp;q=(filetype:pdf+)&amp;entqr=3&amp;entqrm=0&amp;wc=200&amp;wc_mc=1&amp;oe=UTF-8&amp;ud=1&amp;start=10">Next &gt;&lt;/a>
+									<br/>&lt;a ctype="nav.next" href="/search?q=seneca&amp;btnG=Start+Search&amp;site=default_collection&amp;client=test_mainfrontend&amp;output=xml_no_dtd&amp;proxystylesheet=test_mainfrontend&amp;filter=p&amp;getfields=*&amp;ie=UTF-8&amp;ulang=&amp;ip=192.168.8.1&amp;access=p&amp;sort=date:D:L:d1&amp;q=(filetype:pdf+)&amp;entqr=3&amp;entqrm=0&amp;wc=200&amp;wc_mc=1&amp;oe=UTF-8&amp;ud=1&amp;start=10">Next&lt;/a>
+								</div>
+								<div class="markdown">
+									But there&rsquo;s a lot more we can do with each tag object. See boxes on this column.
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_tag_after_tag">
+						<div class="boxtitle">
+							<span class="boxtitle">FINDING A TAG AFTER ANOTHER TAG</span>
+						</div>
+
+		 				<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Finding a TAG AFTER a tag by TAG NAME and/or TAG ATTRIBUTE(S)
+								</div>
+								<div class="markdown">
+									We look at the tag object <span class="extracode">ourtag</span> 
+									and find the 1st tag after 
+									<br/>with the name <span class="usermade">"div"</span>
+									and with the attribute <span class="usermade">"class"</span> that has the value <span class="usermade">"nice_div"</span>.
+									<br/>We get a tag object.
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>.find_next_sibling( <span class="usermade">"div"</span>,attrs={ <span class="usermade">"class"</span>:<span class="usermade">"nice_div"</span> } )
+								</div>
+								<div class="markdown">
+									So now what?
+									<br/>We can now store it in a variable <span class="extracode">ourtagafter</span>. Then what? Here, we just print-display it out on the screen:
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtagafter</span> = <span class="extracode">ourtag</span>.find_next_sibling( <span class="usermade">"div"</span>,attrs={ <span class="usermade">"class"</span>:<span class="usermade">"nice_div"</span> } )
+									<br/><span class="extracode">print ourtagafter</span>
+								</div>
+								<div class="codeoutput">
+									&lt;div class="nice_div"&gt;
+									&lt;p&gt;yet another paragraph&lt;/p&gt;
+									&lt;/div&gt;
+								</div>
+								<div class="markdown">
+									But there&rsquo;s more we can do. See boxes on this column.
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_attribute_of_tag">
+						<div class="boxtitle">
+							<span class="boxtitle">GETTING THE ATTRIBUTE OF A TAG</span>
+						</div>
+
+		 				<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Getting ALL the ATTRIBUTES of a tag as a dictionary
+								</div>
+								<div class="markdown">
+									We can get all the attributes of a tag object <span class="extracode">ourtag</span> as a dictionary by 
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>.attrs
+								</div>
+								<div class="codeoutput">
+									{'href': 'http://www.journalism.columbia.edu/', 'target': '_blank'}
+								</div>
+							</div>
+
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Getting the VALUE of ONE ATTRIBUTE of a tag
+								</div>
+								<div class="markdown">
+									When we have a tag object <span class="extracode">ourtag</span>, 
+									we can get the value of its <span class="usermade">"href"</span> attribute by 
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>[<span class="usermade">"href"</span>]
+								</div>
+								<div class="codeoutput">
+									'http://www.journalism.columbia.edu/'
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_text_inside_tag">
+						<div class="boxtitle">
+							<span class="boxtitle">GETTING THE TEXT INSIDE A TAG</span>
+						</div>
+
+		 				<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Getting the TEXT INSIDE a tag as ONE LONG TEXT
+								</div>
+								<div class="markdown">
+									When we have a tag object <span class="extracode">ourtag</span>, we can get the all the text inside 
+									<br/>as one long unicode string text by
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>.get_text()
+								</div>
+								<div class="codeoutput">
+									u'\na paragraph\nanother paragraph\nyet another paragraph\n'
+								</div>
+							</div>
+
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Getting the TEXT INSIDE a tag as a LIST OF TEXTS
+								</div>
+								<div class="markdown">
+									When we have a tag object <span class="extracode">ourtag</span>, we can get the all the text inside
+									<br/>as a list of unicode string texts, broken up wherever there&rsquo;s a nested tag, by
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>.find_all( text=True )
+								</div>
+								<div class="codeoutput">
+									[u'\n', u'a paragraph', u'\n', u'another paragraph', u'\n', u'yet another paragraph', u'\n']
+								</div>
+							</div>
+
+							<div class="subchunk">
+								<div class="subchunktitle">
+									Getting the TEXT and TAGS INSIDE a tag as a LIST OF TEXTS and TAGS
+								</div>
+								<div class="markdown">
+									When we have a tag object <span class="extracode">ourtag</span>, we can get the all the text inside
+									<br/>as a list of unicode string texts and tag objects by
+								</div>
+								<div class="codeinput">
+									<span class="extracode">ourtag</span>.contents
+								</div>
+								<div class="codeoutput">
+									[u'\n', &lt;p class="nice_p"&gt;a paragraph&lt;/p&gt;, u'\n', &lt;p&gt;another paragraph&lt;/p&gt;, u'\n', &lt;p&gt;yet another paragraph&lt;/p&gt;, u'\n']
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="boxcontent box-code" id="code_saving_as_text_file">
+						<div class="boxtitle">
+							<span class="boxtitle">SAVING TEXT DATA AS A TEXT FILE</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="markdown">
+									We can create a file called <span class="usermade">"ourfilename.txt"</span> (or if there&rsquo;s already a file called "ourfilename.txt", overwrite that file),
+									<br/>and write <span class="usermade">"blah\n"</span>
+									<br/>and write <span class="usermade">"blah blah\n"</span>
+									<br/>and write <span class="usermade">"blah blah blah"</span> by
+								</div>
+								<div class="codeinput">
+									with open( <span class="usermade">"ourfilename.txt"</span>,"wb" ) as <span class="temp">ourfile</span>:
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourfile</span>.write( <span class="usermade">"blah\n"</span> )
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourfile</span>.write( <span class="usermade">"blah blah\n"</span> )
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourfile</span>.write( <span class="usermade">"blah blah blah"</span> )
+								</div>
+								<div class="markdown">
+									It&rsquo;s probably obvious at this point that instead of nonsense text like "blah blah blah", we can easily write any of the data we scraped to a text file. But we probably want to save our data so that it&rsquo;s more structured...
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="boxcontent box-code" id="code_saving_as_csv">
+						<div class="boxtitle">
+							<span class="boxtitle">SAVING TABULAR DATA AS A CSV FILE</span>
+						</div>
+
+						<div class="chunk">
+							<div class="subchunk">
+								<div class="subchunktitle">
+								</div>
+								<div class="markdown">
+									We can create a file called <span class="usermade">"ourfilename.csv"</span> (or if there&rsquo;s already a file called "ourfilename.csv", overwrite that file),
+									<br/>and write the row <span class="usermade">"person"</span>,<span class="usermade">"place"</span>,<span class="usermade">"thing"</span>
+									<br/>and write the row <span class="usermade">"Alice"</span>,<span class="usermade">"Wonderland"</span>,<span class="usermade">"Jabberwock"</span>
+									<br/>and write the row <span class="usermade">"Captain Jack"</span>,<span class="usermade">"Tortuga"</span>,<span class="usermade">"slap"</span>
+								</div>
+								<div class="codeinput">
+									import csv
+									<br/>with open( <span class="usermade">"ourfilename.csv"</span>,"wb" ) as <span class="temp">ourfile</span> : 
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourwriter</span> = csv.writer( <span class="temp">ourfile</span> )
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourwriter</span>.writerow( [ <span class="usermade">"person"</span>,<span class="usermade">"place"</span>,<span class="usermade">"thing"</span> ] ) 
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourfile</span>.flush()
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourwriter</span>.writerow( [ <span class="usermade">"Alice"</span>,<span class="usermade">"Wonderland"</span>,<span class="usermade">"Jabberwock"</span> ] ) 
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourfile</span>.flush()
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourwriter</span>.writerow( [ <span class="usermade">"Captain Jack"</span>,<span class="usermade">"Tortuga"</span>,<span class="usermade">"slap"</span> ] ) 
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="temp">ourfile</span>.flush()
+								</div>
+								<div class="markdown">
+									Or if we stored our data in a list of dictionaries, 
+								</div>
+								<div class="codeinput">
+									<span class="temp">ourlistofdictionaries</span> = [
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="usermade">"person"</span>:<span class="usermade">"Alice"</span>,<span class="usermade">"place"</span>:<span class="usermade">"Wonderland"</span>,<span class="usermade">"thing"</span>:<span class="usermade">"Jabberwock"</span> },
+									<br/>&nbsp;&nbsp;&nbsp;&nbsp;{ <span class="usermade">"person"</span>:<span class="usermade">"Captain Jack"</span>,<span class="usermade">"place"</span>:<span class="usermade">"Tortuga"</span>,<span class="usermade">"thing"</span>:<span class="usermade">"slap"</span> }
+									<br/>]
+									<br/>import pandas
+									<br/><span class="extracode">ourdataframe</span> = pandas.DataFrame( <span class="temp">ourlistofdictionaries</span> )
+									<br/><span class="extracode">ourdataframe</span>.to_csv( <span class="usermade">"ourfilename.csv"</span>,index=False )
+								</div>
+								<div class="markdown">
+									So we can write our data to a file our as we scrape, or store our data in a data structure like a list of dictionaries so that we can write it to a file when we finish.
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				<!-- boxstructure -->
+					<div class="boxstructure_wrapper">
+					</div>
+					<script>
+						var boxes_hiddleston_arra = [
+							{
+								"boxtype":"defi",
+								"content_small":"web-scraping",
+								"content_id":"defi_webscraping"
+							},
+							//
+							{
+								"boxtype":"note",
+								"content_small":"Why scrape?",
+								"content_id":""
+							},
+							{
+								"boxtype":"note",
+								"content_small":"The ethics of scraping",
+								"content_id":"note_ethics_of_scraping"
+							},
+							//
+							{
+								"boxtype":"none boxesheader",
+								"content_small":"How HTML works",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"an HTML tag",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"the name<span class=''> &middot; &middot; &middot; &middot;</span> of an HTML tag",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"an attribute of an HTML tag",
+								"content_id":""
+							},
+							{
+								"boxtype":"exam",
+								"content_small":"an HTML table",
+								"content_id":""
+							},
+						];
+						var boxes_hemsworth_arra = [
+							//
+							{
+								"boxtype":"none boxesheader",
+								"content_small":"0: Installing &amp; launching",
+								"content_id":""
+							},
+							{
+								"boxtype":"meth",
+								"content_small":"installing Anaconda",
+								"content_id":"meth_installing_anaconda"
+							},
+							{
+								"boxtype":"meth",
+								"content_small":"launching ipython notebook",
+								"content_id":"meth_launching_ipython_notebook"
+							},
+						];
+						var boxes_evans_arra = [
+							//
+							{
+								"boxtype":"none boxesheader",
+								"content_small":"1: Getting the HTML",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"a variable",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"to print",
+								"content_id":""
+							},
+							{
+								"boxtype":"code",
+								"content_small":"copying &amp; pasting",
+								"content_id":"code_copying_and_pasting"
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"a function",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"a library",
+								"content_id":""
+							},
+							{
+								"boxtype":"code",
+								"content_small":"requesting",
+								"content_id":"code_requesting"
+							},
+							{
+								"boxtype":"code",
+								"content_small":"logging in or filling forms",
+								"content_id":"code_filling_forms"
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"a for-loop",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"if-else statements",
+								"content_id":""
+							},
+							{
+								"boxtype":"code",
+								"content_small":"scraping from a list of URLs",
+								"content_id":"code_scraping_list_of_urls"
+							},
+						];
+						var boxes_johansson_arra = [
+							//
+							{
+								"boxtype":"none boxesheader",
+								"content_small":"2: Turning the HTML into &ldquo;soup&rdquo;",
+								"content_id":""
+							},
+							{
+								"boxtype":"code",
+								"content_small":"turning the HTML into &ldquo;soup&rdquo;",
+								"content_id":"code_html_to_soup"
+							},
+						];
+						var boxes_downeyjr_arra = [
+							//
+							{
+								"boxtype":"none boxesheader",
+								"content_small":"3: Digging through the &ldquo;soup&rdquo;",
+								"content_id":""
+							},
+
+							{
+								"boxtype":"code",
+								"content_small":"tag(s) by name and attribute",
+								"content_id":"code_tags_by_name_and_attribute"
+							},
+
+							{
+								"boxtype":"code",
+								"content_small":"tag(s) inside another tag",
+								"content_id":"code_tags_inside_tag"
+							},
+							{
+								"boxtype":"code",
+								"content_small":"tag<span class=''> &middot; &middot;</span> after<span class=''> &middot;</span> another tag",
+								"content_id":"code_tag_after_tag"
+							},
+
+							{
+								"boxtype":"code",
+								"content_small":"the attributes of a tag",
+								"content_id":"code_attribute_of_tag"
+							},
+							{
+								"boxtype":"code",
+								"content_small":"the text inside<span class=''> &middot; &middot;</span> a tag",
+								"content_id":"code_text_inside_tag"
+							},
+						];
+						var boxes_ruffalo_arra = [
+							//
+							{
+								"boxtype":"none boxesheader",
+								"content_small":"4: Saving the data",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"a list",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"a dictionary",
+								"content_id":""
+							},
+							{
+								"boxtype":"defi",
+								"content_small":"a dataframe",
+								"content_id":""
+							},
+							{
+								"boxtype":"code",
+								"content_small":"text data as a text file",
+								"content_id":"code_saving_as_text_file"
+							},
+							{
+								"boxtype":"code",
+								"content_small":"tabular data as CSV",
+								"content_id":"code_saving_as_csv"
+							},
+							// {
+							// 	"boxtype":"code",
+							// 	"content_small":"nested data as JSON",
+							// 	"content_id":""
+							// },
+						];
+						boxfiller( "scraping",[ "hiddleston","hemsworth","evans","johansson","downeyjr","ruffalo", ] );
+					</script>
+			</div>
+		</div>
+	</div>
+</BODY>
+</HTML>

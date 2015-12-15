@@ -54,12 +54,17 @@
 	     url('webfontkit/ubuntucerebrisymup-regular.ttf') format('truetype'),
 	     url('webfontkit/ubuntucerebrisymup-regular.svg#webfont') format('svg');
 }
+			/*font-family:'UbuntuCerebri',Ubuntu,sans-serif;*/
+			/*font-family:'Economica','UbuntuCerebri',Ubuntu,sans-serif;*/
+			/*font-family:'Ubuntu Mono',Courier,'Andale Mono',monospace;*/
 
+
+	/*WRAPPERS*/
 		*{
 			/*position*/
 			/*box*/
-			padding:0px;
-			margin:0px;
+			padding:0;
+			margin:0;
 			/*text*/
 		}
 		body{
@@ -72,34 +77,171 @@
 			/*box*/
 			margin:10px;
 			/*text*/
-			font-size:12px;
+			font-size:13px;
 			line-height:18px;
 			font-family:'UbuntuCerebri',Ubuntu,sans-serif;
 		}
 
 
-		/*BOXCONTENT*/
+	/*BOXSTRUCTURE*/
+		.boxstructure_wrapper{
+			overflow:auto;
+		}
+		.boxstructure{
+			/*position*/
+			overflow:auto;
+			float:left;
+			/*box*/
+			margin-bottom:3px;
+			/*text*/
+		}
+		.bar{
+			/*position*/
+			position:relative;
+			float:left;
+			/*box*/
+			background-color:#222;
+			width:4px;
+			margin:0 6px 0 0;
+			/*text*/
+			color:white;
+			text-align:center;
+		}
+		.boxes{
+			/*position*/
+			position:relative;
+			float:left;
+			/*box*/
+			/*text*/
+		}
+		.boxcolumn{
+			/*position*/
+			position:relative;
+			float:left;
+			/*box*/
+			margin:0 12px 0 0;
+			/*text*/
+		}
+
+	/*BOXCONTENT*/
+	/*box-chunk-subchunk(title,codeinput,codeoutput,line)*/
+	/*box*/
 		.boxcontent,
 		.box{
 			/*position*/
 			/*box*/
-			margin:0 0 6px 0;
-			border:3px solid #ccc; /*gray*/
+			margin-bottom:6px;
+			border:3px solid #ccc;
 			-webkit-border-radius: 6px;
 			-moz-border-radius: 6px;
 			border-radius: 6px;
-			padding:3px 6px 6px 6px;
+			padding:3px 6px;
 			/*text*/
 			font-family:'UbuntuCerebri',Ubuntu,sans-serif;
 			cursor:pointer; cursor:hand;
 		}
 		/*.boxcontent{ display:none; }*/
-		td{ vertical-align:top; }
 		.boxcontent{ width:600px; }
 		.box{ width:180px; }
-		.pre{
-			white-space:pre;
+		td{ vertical-align:top; }
+	/*chunk,subchunk*/
+		.chunk{
+			margin-top:9px;
+			border-top:1px solid #bbb;
 		}
+		.subchunk{
+			margin:15px 0;
+		}
+		.subchunk:first-child{
+			margin-top:9px;
+		}
+		.subchunk:last-child{
+			margin-bottom:6px;
+		}
+	/*title*/
+		.boxesheader{
+			/*position*/
+			/*box*/
+			/*text*/
+			font-family:'Economica','UbuntuCerebri',Ubuntu,sans-serif;
+			font-size:30px;
+			line-height:30px;
+		}
+		.boxtitle{
+			/*position*/
+			/*box*/
+			margin:6px 0 9px 0;
+			/*text*/
+			font-size:24px;
+			font-family:'Economica','UbuntuCerebri',Ubuntu,sans-serif;
+		}
+		.subchunktitle{
+			/*position*/
+			/*box*/
+			margin:6px 0;
+			/*text*/
+			font-size:18px;
+			font-family:'Economica','UbuntuCerebri',Ubuntu,sans-serif;
+			font-style:italic;
+		}
+	/*codeinput,codeoutput*/
+		div.codeinput,
+		div.codeoutput{
+			/*position*/
+			/*box*/
+			margin:3px;
+			padding-left:6px;
+			overflow-x:auto;
+			white-space:nowrap;
+			background-color:#eee;
+			/*text*/
+			font-family:'Ubuntu Mono',Courier,'Andale Mono',monospace;
+			color:#555;
+		}
+		div.codeinput::-webkit-scrollbar,
+		div.codeoutput::-webkit-scrollbar{
+			-webkit-appearance: none;
+			width: 7px;
+		}
+		div.codeinput::-webkit-scrollbar-track,
+		div.codeoutput::-webkit-scrollbar-track{
+			background-color:#eee
+		}
+		div.codeinput::-webkit-scrollbar-thumb,
+		div.codeoutput::-webkit-scrollbar-thumb{
+			background-color:#ddd;
+			border-radius: 4px;
+			border: 3px solid transparent;
+			background-clip: content-box;
+		}
+		div.codeinput.aside{
+			background-color:#ddd;
+		}
+		div.codeinput.aside::-webkit-scrollbar-track{
+			background-color:#ddd
+		}
+		div.codeinput.aside::-webkit-scrollbar-thumb{
+			background-color:#ccc;
+		}
+		div.codeoutput{
+			background-color:#dee;
+			color:#888;
+		}
+		div.codeoutput::-webkit-scrollbar-track{
+			background-color:#dee
+		}
+		div.codeoutput::-webkit-scrollbar-thumb{
+			background-color:#cdd;
+		}
+	/*line*/
+		/*text: default for non-".text5"*/
+		.show{
+			color:black;
+		}
+		.small .show{
+			color:#fff;
+		}
+		/*line*/
 		.line{
 			/*position*/
 			position:relative;
@@ -109,7 +251,7 @@
 			white-space:nowrap; /*no wrap*/
 		}
 		.line.thin{
-			height:12px;
+			height:13px;
 		}
 		.line.halfthin{
 			height:15px;
@@ -180,8 +322,7 @@
 		}
 
 
-		/*COLORS*/
-		/*box colors*/
+	/*COLORS*/
 		.box-none{
 			/*position*/
 			/*box*/
@@ -192,156 +333,121 @@
 			padding-bottom:3px;
 			/*text*/
 		}
+	/*jour,note*/
 		.box-jour,
 		.box-note{
-			border-color:#ccc; /*gray*/
+			border-color:#bbb; /*gray*/
 		}
 		.box-jour.small,
 		.box-note.small{
-			background-color:#ccc; /*gray*/
+			background-color:#bbb; /*gray*/
 			color:#fff;
 		}
+	/*axio*/
 		.box-axio{
-			border-color:#99f; /*purple*/
+			border-color:#43b; /*purple*/
 		}
 		.box-axio.small{
-			background-color:#99f; /*purple*/
+			background-color:#43b; /*purple*/
 			color:#fff;
 		}
+	/*defi*/
 		.box-defi{
-			border-color:#7cf; /*blue*/
+			border-color:#39e; /*blue*/
 		}
 		.box-defi.small{
-			background-color:#7cf; /*blue*/
+			background-color:#39e; /*blue*/
 			color:#fff;
 		}
-		.box-prop{
-			border-color:#8f7; /*green*/
+		.defi{
+			color:#39e; /*blue*/
 		}
-		.box-prop.small{
-			background-color:#8f7; /*green*/
-			color:#fff;
+		.defi.highlighter{
+			color:#3cf; /*(lighter) blue*/
 		}
-		.box-exam,
-		.box-game{
-			border-color:#fe7; /*yellow*/
-		}
-		.box-exam.small,
-		.box-game.small{
-			background-color:#fe7; /*yellow*/
-			color:#fff;
-		}
+	/*algo*/
 		.box-algo{
-			/*border-color:#fb8;*/ /*orange*/
-			border-color:#f88; /*darker pink*/
+			border-color:#6cd; /*sea blue*/
 		}
 		.box-algo.small{
-			/*background-color:#fb8;*/ /*orange*/
-			background-color:#f88; /*darker pink*/
+			background-color:#6cd; /*sea blue*/
 			color:#fff;
 		}
+		.box-algo .chunk{
+			border-top:1px solid #6cd;
+		}
+	/*code,tool*/
 		.box-visu,
 		.box-tool,
 		.box-meth, /*method: detailed instructions for doing stuff, just not code*/
 		.box-code{
-			border-color:#fa9; /*pink #ffc0cb*/
+			border-color:#9de; /*light sea blue*/
 		}
 		.box-visu.small,
 		.box-tool.small,
 		.box-meth.small,
 		.box-code.small{
-			background-color:#fa9; /*pink #ffc0cb*/
+			background-color:#9de; /*light sea blue*/
 			color:#fff;
 		}
+		.box-code .chunk{
+			border-top:1px solid #9de;
+		}
+	/*prop*/
+		.box-prop{
+			border-color:#9d5; /*green*/
+		}
+		.box-prop.small{
+			background-color:#9d5; /*green*/
+			color:#fff;
+		}
+		.prop{
+			color:#9d5; /*green*/
+		}
+	/*exam*/
+		.box-exam,
+		.box-game{
+			border-color:#fd3; /*yellow*/
+		}
+		.box-exam.small,
+		.box-game.small{
+			background-color:#fd3; /*yellow*/
+			color:#fff;
+		}
+		.box-exam .chunk{
+			border-top:1px solid #ed3;
+		}
+	/*other*/
 		.spec{ /*for special cases*/
-			border-color:#fe7; /*yellow*/
+			border-color:#fd3; /*yellow*/
 		}
 		.recall{ /*for stuff that are reminders/refreshers*/
 		}
-		/*text colors*/
-		/*default for non-".text5"*/
+	/*other: text*/
+		/**/
 		a{
 			color:#444;
 		}
-		.show{
-			color:black;
+		.pre{
+			white-space:pre;
 		}
-		.small .show{
-			color:#fff;
-		}
-		/*others*/
-		.defi{
-			color:#7cf; /*blue*/
-		}
-		.prop{
-			color:#8f7; /*green*/
-		}
-		.code{
-			border-color:#fa9; /*pink #ffc0cb*/
-		}
-		.class,
-		.focus{
-			color:#f40; /*red*/
-		}
-		.relation{
-			/*color:#fcc;*/ /*grayish red*/
-			/*color:#fb8;*/ /*orange*/
-			color:#a5f; /*purple*/
-		}
-		.box-exam.small .class,
-		.box-exam.small .focus{
-			color:#f97; /*softer red*/
-		}
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		.chunk{
-			margin:9px 0 3px 0;
-			padding-top:9px;
-			/*border-top:2px solid #fa9;*/
-			border-top:1px dashed #fa9;
-		}
+		/*code*/
 		input{
-			font-size:12px;
-			font-family:'UbuntuCerebri',Ubuntu,sans-serif;
-		}
-		div.codeinput{
-			/*position*/
-			/*box*/
-			margin:3px 3px 0 3px;
-			padding-left:6px;
-			background-color:#eee; /* #333 */
-			/*text*/
-			overflow-x: auto;
-			white-space: nowrap;
-			color:#555; /* #fcc light pink*/
-			font-family:'Ubuntu Mono',Monaco,monospace;
-		}
-		div.codeinput::-webkit-scrollbar {
-			-webkit-appearance: none;
-			width: 7px;
-		}
-		div.codeinput::-webkit-scrollbar-track{
-			background-color:#eee
-		}
-		div.codeinput::-webkit-scrollbar-thumb {
-			border-radius: 4px;
-			background-color: rgba(220,220,220,1);
-			border: 3px solid transparent;
-			background-clip: content-box;
+			font-size:13px;
+			font-family:'Ubuntu Mono',Courier,'Andale Mono',monospace;
+			color:#c36; /*brick red*/
 		}
 		.usermade{
-			color:#f62; /*red*/
-			/*color:#fe8;*/ /*light orange*/
+			color:#c36; /*brick red*/
 		}
-		.box.small .usermade{
-			color:#fdd; /*pink*/
+		.box-code.small .usermade{
+			color:#fee;
+		}
+		.box-defi.small .usermade{
+			color:#edd;
 		}
 		.extracode{
-			color:#eaa;
+			color:#c99;
 		}
 		.temp{
 			/*color:#f85;*/ /*coral red*/
@@ -350,7 +456,7 @@
 		.comment{
 			color:#888; /*dark gray*/
 			font-size:12px;
-			font-family:'Ubuntu Mono',Monaco,monospace;
+			font-family:'Ubuntu Mono',Courier,'Andale Mono',monospace;
 		}
 		.comment a{
 			color:#888; /*dark gray*/
@@ -358,23 +464,13 @@
 		.small .comment{
 			color:#ddd; /*pale gray*/
 		}
-		div.codeoutput{
-			/*display:none;*/
-			/*position*/
-			/*box*/
-			margin:3px;
-			padding-left:6px;
-			background-color:#dee;/*#eed;*/
-			/*text*/
-			color:#888;
-			font-family:'Ubuntu Mono',Monaco,monospace;
+
+		/**/
+		.fullunderscore{
+			font-family:'Ubuntu Mono',Courier,'Andale Mono',monospace;
 		}
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
-		/* experimenting!!!!!!! */
+
+		/*explanations*/
 		.note,
 		.additionalremark,
 		.times,
@@ -384,39 +480,16 @@
 		.invisible{
 			color:#ccc; /*light gray*/
 		}
-		.inenglish{
+		.inenglish{ /*highlighters*/
 			color:#ddd; /*pale gray*/
 		}
 		.spacer{
 			color:rgba(255,255,255,0);
 		}
-		/*text colors: titles*/
-		.title{
-			background-color:gray;
-			color:#fff
-		}
-		.defi.title{
-			background-color:#7cf; /*blue*/
-		}
-		.prop.title{
-			background-color:#8f7; /*green*/
-		}
-		.exam.title{
-			background-color:#fe7; /*yellow*/
-		}
-		.tool.title,
-		.jour.title{
-			background-color:#fa9; /*pink #ffc0cb*/
-		}
-		.algo.title{
-			background-color:#f88; /*darker pink*/
-		}
-		.note.title{
-			background-color:#aaa; /*lighter-than-middle gray*/
-		}
+		
 		/**/
 		.highlighter{
-			font-family:'UbuntuCerebriHighlight',Ubuntu,sans-serif;
+			font-family:'UbuntuCerebriHighlight','UbuntuCerebri',Ubuntu,sans-serif;
 		}
 		/**/
 		.sub{
@@ -476,74 +549,60 @@
 		.opti{
 			font-family:'UbuntuCerebriStar','UbuntuCerebriHat','UbuntuCerebri',Ubuntu,sans-serif;
 		}
-		/**/
-		.fullunderscore{
-			font-family:'Ubuntu Mono',Monaco,monospace;
-		}
 
 
-		/*BOXSTRUCTURE*/
-		.boxstructure_wrapper{
-			overflow:auto;
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+		/*others*/
+		.class,
+		.focus{
+			color:#f40; /*red*/
 		}
-		.boxstructure{
-			/*position*/
-			overflow:auto;
-			float:left;
-			/*box*/
-			margin-bottom:3px;
-			/*text*/
+		.relation{
+			color:#a5f; /*purple*/
 		}
-		/*position boxstructures individually by their id's*/
-/*		#aquiringdata,
-		#preparingdata,
-		#exploringdata,
-		#communicatingdata,
-		#storingdata{
-			float:left;
+		.box-exam.small .class,
+		.box-exam.small .focus{
+			color:#f97; /*softer red*/
 		}
-		#statistic,
-		#statistic4positions,
-		#statistic4spread,
-		#statistic4correlation{
-			float:left;
-		}*/
-		.bar{
-			/*position*/
-			position:relative;
-			float:left;
-			/*box*/
+		/*for true negative, false positive, etc.*/
+		.posi{
+			color:#b00;
+		}
+		.nega{
+			color:#aaa;
+		}
+		/*text colors: titles*/
+		.title{
 			background-color:gray;
-			width:12px;
-			margin:0 6px 0 0;
-			/*text*/
-			color:white;
-			text-align:center;
+			color:#fff
 		}
-		.bar_color0{
-			background-color:#444; /*dark gray*/
+		.defi.title{
+			background-color:#7cf; /*blue*/
 		}
-		.bar_color1{
-			background-color:#006; /*dark blue*/ /*statistics*/
+		.prop.title{
+			background-color:#8f7; /*green*/
 		}
-		.bar_color2{
-			background-color:#304; /*dark radish*/
+		.exam.title{
+			background-color:#fe7; /*yellow*/
 		}
-		.bar_color3{
-			background-color:#252; /*dark green*/ /*probability*/
+		.tool.title,
+		.jour.title{
+			background-color:#fa9; /*pink #ffc0cb*/
 		}
-		.bar_color4{
-			background-color:#035; /*dark green-blue*/
+		.algo.title{
+			background-color:#f88; /*darker pink*/
 		}
-		.bar_color5{
-			background-color:#466; /*greenish gray*/ /*NLP*/
+		.note.title{
+			background-color:#aaa; /*lighter-than-middle gray*/
 		}
-
-		.boxes{
-			/*position*/
-			position:relative;
-			float:left;
-			/*box*/
-			margin:0 12px 0 0;
-			/*text*/
-		}
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
+	/* experimenting!!!!!!! */
